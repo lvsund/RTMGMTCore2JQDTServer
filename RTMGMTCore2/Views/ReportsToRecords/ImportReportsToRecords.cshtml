@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "ImportReportsToRecords";
+}
+
+<h2>ImportReportsToRecords</h2>
+<h3>@ViewBag.Message</h3>
+
+<form method="post" asp-action="ImportReportsToRecords" asp-controller="ReportsToRecords" enctype="multipart/form-data">
+    <input type="file" name="files" multiple />
+    <input type="submit" value="Upload" />
+</form>

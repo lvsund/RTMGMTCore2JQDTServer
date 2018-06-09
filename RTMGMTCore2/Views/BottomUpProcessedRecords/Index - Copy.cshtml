@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RTMGMTCore2.Models.BottomUpProcessedRecords>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bottom Up Processed Records</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title"> Bottom Up Processed Records</h1>
+            </div>
+            <div class="panel-body">
+                <table id="BottomUpProcessedRecords-data-table"
+                       class="table table-striped table-bordered"
+                       style="width:100%">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RtString)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RtString)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#BottomUpProcessedRecords-data-table').DataTable();
+
+        });
+    </script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+}

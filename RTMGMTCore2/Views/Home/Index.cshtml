@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Reports To Fixit</h1>
+    <p class="lead">Clean up your 'reports to' information and make it useable again!</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Actions</h2>
+        <p>
+            @Html.ActionLink("Reports To Records", "Index", "ReportsToRecords")<br />
+            @Html.ActionLink("Top Down Processed Records", "Index", "TopDownProcessedRecords")<br />
+            @Html.ActionLink("Bottom Up Processed Records", "Index", "BottomUpProcessedRecords")<br />
+            @Html.ActionLink("Duplicate Reports To Records", "Index", "DuplicateRTRecords")<br />
+            @Html.ActionLink("Broken Records", "Index", "BrokenRecords")<br />
+            @Html.ActionLink("Fix Records", "Index", "FixRecords")<br />
+            @Html.ActionLink("Required Corrections", "Index", "RequiredCorrectionsSets")<br />
+
+        </p>
+
+    </div>
+</div>
+

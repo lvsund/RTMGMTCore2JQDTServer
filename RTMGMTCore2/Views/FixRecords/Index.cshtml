@@ -1,0 +1,99 @@
+﻿@model IEnumerable<RTMGMTCore2.Models.FixRecords>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Records To Be Fixed</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        if ($.fn.DataTable.isDataTable('#tblfr')) {
+            $('#tblfr').dataTable().fnDestroy();
+            $('#tblfr').dataTable().empty();
+
+        }
+
+        var complete = $('#tblfr').DataTable(
+            {
+                "serverSide": true,
+                "destroy": true,
+                "processing": true,
+                "stateSave": true,
+                "ajax":
+                    {
+                        url: "/FixRecords/FRList",
+                        method: "POST"
+                    },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "reportingId" },
+                    { "data": "title" },
+                    { "data": "name" },
+                    { "data": "reportsToId" },
+                    { "data": "employeeId" }
+                ]
+            }
+
+        );
+
+        /// Following code is for filter input to apply filter only on Enter
+        var itm = $("#tblfr_filter input")
+
+        itm.unbind();
+        itm.keyup(function (e) {
+            //enter or tab
+            if (e.keyCode == 13) {
+                complete.search(this.value).draw();
+            }
+        });
+
+
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title"> Records To Be Fixed</h1>
+            </div>
+            <div class="panel-body">
+                <table class="table" id="tblfr">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                ReportingId
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                ReportsToId
+                            </th>
+                            <th>
+                                EmployeeId
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

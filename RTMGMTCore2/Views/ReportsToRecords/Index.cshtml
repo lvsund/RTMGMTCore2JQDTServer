@@ -1,0 +1,128 @@
+﻿@model IEnumerable<RTMGMTCore2.Models.ReportsToRecords>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Reports-To Records</h2>
+
+<p>
+    <a asp-action="ImportReportsToRecords">Import Records</a> |  <a asp-action="CreateReportingHierarchy">Create Reporting Hierarchy</a> | <a asp-action="DeleteAllData">Delete All Data</a> | <a asp-action="ClearProcessingTables">Clear Processing Tables</a> | <a asp-action="ExportReportsToRecords">Export Reports To Records</a>
+
+
+</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        if ($.fn.DataTable.isDataTable('#tblrtr')) {
+            $('#tblrtr').dataTable().fnDestroy();
+            $('#tblrtr').dataTable().empty();
+
+        }
+
+        var complete = $('#tblrtr').DataTable(
+            {
+                "serverSide": true,
+                "destroy": true,
+                "processing": true,
+                "stateSave": true,
+                "ajax":
+                    {
+                        url: "/ReportsToRecords/RTRList",
+                        method: "POST"
+                    },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "reportingId" },
+                    { "data": "title" },
+                    { "data": "name" },
+                    { "data": "reportsToId" },
+                    { "data": "employeeId" },
+
+                    {
+                        "title": "",
+                        "data": "id",
+                        "searchable": false,
+                        "sortable": false,
+
+
+
+                        "render": function (data, type, full, meta) {
+                            return '<a href="@Url.Action("Edit", "ReportsToRecords")?id=' + data + '" class="editReportsToRecords">Edit</a> | <a href="@Url.Action("Details", "ReportsToRecords")?id=' + data + '" class="detailsReportsToRecords">Details</a> | <a href="@Url.Action("Delete", "ReportsToRecords")?id=' + data + '" class="deleteReportsToRecords">Delete</a>';
+                                }
+
+
+
+
+                           @*return '<a class="btn btn-info" href="/ReportsToRecords/Edit/' + full.id + '">Edit</a>';*@
+
+                    }
+
+
+
+
+                ]
+            }
+
+        );
+
+        /// Following code is for filter input to apply filter only on Enter
+        var itm = $("#tblrtr_filter input")
+
+        itm.unbind();
+        itm.keyup(function (e) {
+            //enter or tab
+            if (e.keyCode == 13) {
+                complete.search(this.value).draw();
+            }
+        });
+
+
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title"> Reports To Records</h1>
+            </div>
+            <div class="panel-body">
+                <table class="table" id="tblrtr">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                ReportingId
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                ReportsToId
+                            </th>
+                            <th>
+                                EmployeeId
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

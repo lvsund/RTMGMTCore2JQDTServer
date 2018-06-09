@@ -1,0 +1,110 @@
+﻿@model IEnumerable<RTMGMTCore2.Models.RequiredCorrectionsSet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Required Corrections</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    @Html.ActionLink("Test Your Corrections", "TestYourCorrections") |@Html.ActionLink("Clear Corrections", "ClearCorrections")|@Html.ActionLink("Export Corrections", "ExportCorrections")
+</p>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        if ($.fn.DataTable.isDataTable('#tblrc')) {
+            $('#tblrc').dataTable().fnDestroy();
+            $('#tblrc').dataTable().empty();
+
+        }
+
+        var complete = $('#tblrc').DataTable(
+            {
+                "serverSide": true,
+                "destroy": true,
+                "processing": true,
+                "stateSave": true,
+                "ajax":
+                    {
+                        url: "/RequiredCorrectionsSets/RCList",
+                        method: "POST"
+                    },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "reportingId" },
+                    { "data": "reportsToId" },
+                    {
+                        "title": "",
+                        "data": "id",
+                        "searchable": false,
+                        "sortable": false,
+
+
+
+                        "render": function (data, type, full, meta) {
+                            return '<a href="@Url.Action("Edit", "RequiredCorrectionsSets")?id=' + data + '" class="editRequiredCorrectionsSet">Edit</a> | <a href="@Url.Action("Details", "RequiredCorrectionsSets")?id=' + data + '" class="detailsRequiredCorrectionsSet">Details</a> | <a href="@Url.Action("Delete", "RequiredCorrectionsSets")?id=' + data + '" class="deleteRequiredCorrectionsSet">Delete</a>';
+                                }
+
+
+
+
+                           @*return '<a class="btn btn-info" href="/RequiredCorrectionsSet/Edit/' + full.id + '">Edit</a>';*@
+
+                    }
+
+
+
+
+                ]
+            }
+
+        );
+
+        /// Following code is for filter input to apply filter only on Enter
+        var itm = $("#tblrc_filter input")
+
+        itm.unbind();
+        itm.keyup(function (e) {
+            //enter or tab
+            if (e.keyCode == 13) {
+                complete.search(this.value).draw();
+            }
+        });
+
+
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title"> Required Corrections</h1>
+            </div>
+            <div class="panel-body">
+                <table class="table" id="tblrc">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                ReportingId
+                            </th>
+                            <th>
+                                ReportsToId
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
