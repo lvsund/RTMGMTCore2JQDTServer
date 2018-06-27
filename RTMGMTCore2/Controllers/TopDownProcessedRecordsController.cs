@@ -6,6 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RTMGMTCore2.Models;
+using System.IO;
+using CsvHelper;
+using Microsoft.AspNetCore.Http;
+using System.Collections;
+using System.Web;
+using Microsoft.Extensions.FileProviders;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Net;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Hosting;
 
 namespace RTMGMTCore2.Controllers
@@ -243,6 +254,26 @@ namespace RTMGMTCore2.Controllers
                     break;
             }
             return result.ToList();
+        }
+
+        public void ExportProcessedRecords()
+        {
+
+            Response.ContentType = "text/csv";
+
+            Response.ContentType = "application/octet-stream";
+            StringWriter sw = new StringWriter();
+
+            var writer = new CsvWriter(sw);
+            IEnumerable records = (_context.TopDownProcessedRecords.ToList());
+            writer.WriteRecords(records);
+            foreach (TopDownProcessedRecords record in records)
+            {
+                writer.WriteRecord(record);
+
+            }
+            Response.WriteAsync(sw.ToString());
+
         }
     }
 }
