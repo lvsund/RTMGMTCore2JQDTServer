@@ -168,7 +168,7 @@ When you look at the Reports To Records screen above you will notice some choice
 
 As text:
 
-![CSV Text](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/csv data.jpg)
+![CSV Text](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/csvdata.jpg)
 
 As Excel spreadsheet saved as csv file:
 
@@ -290,7 +290,7 @@ In order to identify which records actually need correction, the processing take
 
 ##### Broken Records
 
-![Broken Records](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/Broken Records.jpg)
+![Broken Records](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/BrokenRecords.jpg)
 
 Broken Records shows the 35 records in this data that are orphans, but this doesnt mean that we need to make changes to those 35 records themselves. They all suffer from the same issue in this case- reporting to 1158 which in turn reports to 9999 which doesnt report to anything because in this case 9999 doesnt exist as a 'Reporting_id'.
 
