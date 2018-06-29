@@ -3,7 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTMGMTCore2", "RTMGMTCore2\RTMGMTCore2.csproj", "{C43CC520-7C0E-422C-8D01-99D7FE9B455D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTMGMTCore2", "RTMGMTCore2\RTMGMTCore2.csproj", "{C43CC520-7C0E-422C-8D01-99D7FE9B455D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{181614BF-7CFB-4408-BC37-F415F36F9ADD}"
+	ProjectSection(SolutionItems) = preProject
+		docs\BottomUp.JPG = docs\BottomUp.JPG
+		docs\Broken Records.JPG = docs\Broken Records.JPG
+		docs\BrokenRecords.JPG = docs\BrokenRecords.JPG
+		docs\create.JPG = docs\create.JPG
+		docs\CreateHierarchy.JPG = docs\CreateHierarchy.JPG
+		docs\csv data.JPG = docs\csv data.JPG
+		docs\csvdata.JPG = docs\csvdata.JPG
+		docs\delete.JPG = docs\delete.JPG
+		docs\details.JPG = docs\details.JPG
+		docs\Edit.JPG = docs\Edit.JPG
+		docs\excelcsv.JPG = docs\excelcsv.JPG
+		docs\FixRecords.JPG = docs\FixRecords.JPG
+		docs\importScreen1.JPG = docs\importScreen1.JPG
+		docs\importScreen2.JPG = docs\importScreen2.JPG
+		docs\index.md = docs\index.md
+		docs\MainPage.JPG = docs\MainPage.JPG
+		docs\ReportsToRecords.JPG = docs\ReportsToRecords.JPG
+		docs\RequiredCorrections.JPG = docs\RequiredCorrections.JPG
+		docs\TopDown.JPG = docs\TopDown.JPG
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
