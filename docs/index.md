@@ -168,7 +168,7 @@ When you look at the Reports To Records screen above you will notice some choice
 
 As text:
 
-![CSV Text](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/csvdata.jpg)
+![CSV Text](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/csvdata.JPG)
 
 As Excel spreadsheet saved as csv file:
 
