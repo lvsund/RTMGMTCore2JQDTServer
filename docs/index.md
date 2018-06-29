@@ -14,7 +14,7 @@ output:
 
 Welcome to the Reports-To Fixit Application. 
 
-![Main Page](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/MainPage.jpg)
+![Main Page](../master/docs/MainPage.jpg)
 
 The purpose of this application is to assist organizations in maintaining the information often needed for:
 
