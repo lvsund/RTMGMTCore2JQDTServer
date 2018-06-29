@@ -113,7 +113,7 @@ __Paying attention to these is what this application does.__
 
 Lets answer this by taking a look at the first choice on the main page shown previously- the 'Reports To Records':
 
-![Reports To Records](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/ReportsToRecords.jpg)
+![Reports To Records](https://github.com/lvsund/RTMGMTCore2JQDTServer/blob/master/docs/ReportsToRecords.JPG)
 
 The application requires 5 basic pieces of information:
 
